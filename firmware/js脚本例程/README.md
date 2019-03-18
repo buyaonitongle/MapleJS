@@ -1,0 +1,17 @@
+- `98K.js: 基于爱联提供的开发板，抖音98K；
+- `AWE-Demo.js`: 基于爱联提供的开发板，调用相应的模块。3秒读一次温湿度传感器，继电器操作一次，蜂鸣一次，并在oled屏上显示温湿度数值；
+- `canvas.js`: 基于爱联提供的开发板，调用`MapleJS`的canvas图形module，画圆和矩形；
+- `canvas-atom.js`, `canvas-button.js`: 基于爱联提供的开发板，调用`MapleJS`的canvas图形module，画滑动开关和单选框，2秒自动切换；
+- `canvas-button2.js`: 基于爱联提供的开发板，调用`MapleJS`的canvas图形module，画音乐暂停、开始、快进、快退；
+- `canvas-chart.js`: 基于爱联提供的开发板，调用`MapleJS`的canvas图形module，画动态电池图标和仪表，导入的是湿度值；
+- `canvas-chart2.js`: 基于爱联提供的开发板，调用`MapleJS`的canvas图形module，画静态条形图；
+- `canvas-chart3.js`: 基于爱联提供的开发板，调用`MapleJS`的canvas图形module，画曲线图；
+- `canvas-chart4.js`: 基于爱联提供的开发板，调用`MapleJS`的canvas图形module，画节点事示意图；
+- `canvas-humi.js`: 基于爱联提供的开发板，调用`MapleJS`的canvas图形module，画动态曲线图，导入的是湿度值；
+- `canvas-slide-setting.js`: 基于爱联提供的开发板，调用`MapleJS`的canvas图形module，画滑块配置参数；
+- `canvas-task.js`: 基于爱联提供的开发板，调用`MapleJS`的canvas图形module，画任务进度；
+- `canvas-wave.js`: 基于爱联提供的开发板，调用`MapleJS`的canvas图形module，画动态正弦波；
+- `DHT11.js`: 基于爱联提供的开发板，获取DHT11的传感器数值；
+- `relay.js`: 基于爱联提供的开发板，控制继电器；
+- `uart.js`: 基于爱联提供的开发板，串口输出“hello huawei”。
+
