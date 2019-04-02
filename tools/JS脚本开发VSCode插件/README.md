@@ -1,11 +1,11 @@
-## VSC-AntJS
+## VSC-MapleJS
 
-`MapleJS for Visual Studio Code (vsc-antjs)` 是以 [Visual Studio code](https://code.visualstudio.com/) 为基础的MapleJS开发工具，目前已支持以下特性：
+`MapleJS for Visual Studio Code (vsc-maplejs)` 是以 [Visual Studio code](https://code.visualstudio.com/) 为基础的MapleJS开发工具，目前已支持以下特性：
 
 - 向已连接设备部署代码文件并运行
-- 一键重启MapleJS设备
+- 一键重启运行MapleJS引擎的设备
 - 源文件压缩
-- 中止已连接设备JS引擎的运行
+- 中止已连接设备MapleJS引擎的运行
 
 ### 1 需求
 
@@ -13,7 +13,7 @@ VS code版本不低于 July 2018 v1.26.1，并根据VS code的架构选择安装
 
 建议同时安装 [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) 和 [JavaScript (ES6) code snippets](https://marketplace.visualstudio.com/items?itemName=xabikos.JavaScriptSnippets) ，有助于正确编码
 
-vsc-antjs 需要通过串口读写数据，所以在连接设备前，需要确保已安装USB转串口驱动：
+vsc-maplejs 需要通过串口读写数据，所以在连接设备前，需要确保已安装USB转串口驱动：
 
 - [Silabs drivers](https://www.silabs.com/products/mcu/Pages/USBtoUARTBridgeVCPDrivers.aspx) for Espressif esp8266/esp32
 - [CH43x drivers](https://github.com/adrianmihalko/ch340g-ch34g-ch34x-mac-os-x-driver) for Espressif esp8266/esp32
@@ -34,33 +34,32 @@ vsc-antjs 需要通过串口读写数据，所以在连接设备前，需要确�
 首先下载对应版本的插件安装包 `*.vsix`，然后使用命令行切换到插件所在目录，然后执行下面的代码
 
 ```
-code --install-extension vscode-antjs-0.4.0-x32.vsix
+code --install-extension vscode-maplejs-0.4.5-x64.vsix
 ```
 
-安装之后，打开VS Code即可在扩展列表内看到 `vsc-antjs`
+安装之后，打开VS Code即可在扩展列表内看到 `vsc-maplejs`
 
 ### 3 配置
 
-vsc-antjs支持通过配置文件进行配置，读取的配置文件为工作目录下的 `package.json` ，使用VS code打开工作目录（必须使用打开文件夹才可以使用完整的插件功能），vsc-antjs 会读取 `package.json` 的中的五项配置：
+`vsc-maplejs`共有六个可配置项，其中两个通过配置文件进行配置，读取的配置文件为工作目录下的 `package.json` ，使用VS code打开工作目录（必须使用打开文件夹才可以使用完整的插件功能），`vsc-maplejs` 会读取 `package.json` 的中的以下配置：
 
 ```json
 {
     "main":"src/main.js",
-    "port":"COM5",
-    "isCompress":true,
-    "isPacket":true,
-    "packOpt":{
-        "treeshake":true
-    }
+    "port":"COM5"
 }
 ```
 
 - main: 该参数指定用于部署到设备中的目标JS文件
 - port: 该参数指定用于连接设备的串口号
-- isCompress: 该参数指定部署前是否对目标文件进行压缩，默认为`true`
-- isPacket: 该参数指定部署文件时是否使用分包部署的方式，默认为`true`
-- packOpt: 该参数用于配置`rollup`机制，目前支持以下配置项：
-  - treeshake，用于配置是否启用`treeshaking`机制，默认为`true`；`treeshaking`是一种死代码删除优化，如果不希望去除冗余代码，可以设置为`false`，关闭该优化；
+
+其余四个配置项通过VS code的Setting进行配置，配置过程如下：
+
+![config](./pictures/config.png)
+
+- Compress: 该项用于配置部署前是否对目标文件进行压缩，默认为`true`
+- Packet: 该项用于配置部署文件时是否使用分包部署的方式，默认为`true`
+- Treeshake: 该项用于配置是否启用`treeshaking`机制，默认为`true`；`treeshaking`是一种死代码删除优化，如果不希望去除冗余代码，可以设置为`false`，关闭该优化
 
 ### 4 使用
 
@@ -94,7 +93,7 @@ vsc-antjs支持通过配置文件进行配置，读取的配置文件为工作�
 
 ![select file](./pictures/selectFile-btn.gif)
 
-使用命令：使用 `Ctrl+Shift+p`，在弹出的命令列表中选择 `AntJS: AntJS Select Main File`，在弹出的列表中选择需要部署的文件，选择完成后，选择文件按钮会显示刚被选中的文件名
+使用命令：使用 `Ctrl+Shift+p`，在弹出的命令列表中选择 `MapleJS: MapleJS Select Main File`，在弹出的列表中选择需要部署的文件，选择完成后，选择文件按钮会显示刚被选中的文件名
 
 ![select file](./pictures/selectFile-cmd.gif)
 
@@ -104,7 +103,7 @@ vsc-antjs支持通过配置文件进行配置，读取的配置文件为工作�
 
 ![select port](./pictures/selectCOM-btn.gif)
 
-使用命令：使用 `Ctrl+Shift+p`，在弹出的命令列表中选择 `AntJS: AntJS Select COM Port`，在弹出的列表中选择设备连接的串口，选择完成后，选择文件按钮会显示刚被选中的串口号
+使用命令：使用 `Ctrl+Shift+p`，在弹出的命令列表中选择 `MapleJS: MapleJS Select COM Port`，在弹出的列表中选择设备连接的串口，选择完成后，选择文件按钮会显示刚被选中的串口号
 
 ![select port](./pictures/selectCOM-cmd.gif)
 
@@ -114,7 +113,7 @@ vsc-antjs支持通过配置文件进行配置，读取的配置文件为工作�
 
 ![connect & disconnect](./pictures/connect-btn.gif)
 
-使用命令：使用 `Ctrl+Shift+p`，在弹出的命令列表中选择 `AntJS: AntJS Connect COM Port`，和设备建立连接，选择 `AntJS: AntJS Disconnect COM Port`，和设备断开连接
+使用命令：使用 `Ctrl+Shift+p`，在弹出的命令列表中选择 `MapleJS: MapleJS Connect COM Port`，和设备建立连接，选择 `MapleJS: MapleJS Disconnect COM Port`，和设备断开连接
 
 ![connect & disconnect](./pictures/connect-cmd.gif)
 
@@ -124,7 +123,7 @@ vsc-antjs支持通过配置文件进行配置，读取的配置文件为工作�
 
 ![deploy](./pictures/deploy-btn.gif)
 
-使用命令：使用 `Ctrl+Shift+p`，在弹出的命令列表中选择 `AntJS: AntJS Deploy File to Device`，若已设置好文件和串口，且已连接，则直接部署文件，否则会进行相关提示
+使用命令：使用 `Ctrl+Shift+p`，在弹出的命令列表中选择 `MapleJS: MapleJS Deploy File to Device`，若已设置好文件和串口，且已连接，则直接部署文件，否则会进行相关提示
 
 ![deploy](./pictures/deploy-cmd.gif)
 
@@ -139,7 +138,7 @@ vsc-antjs支持通过配置文件进行配置，读取的配置文件为工作�
 
 ![stop](./pictures/stop-btn.gif)
 
-使用命令：使用 `Ctrl+Shift+p`，在弹出的命令列表中选择 `AntJS: AntJS Stop AntJS Engine`，若设备已连接，则会向设备发送stop script命令使得设备中止JS引擎的运行（由于设备和PC通过串口连接，在直观上可能存在延迟），否则会进行相关提示
+使用命令：使用 `Ctrl+Shift+p`，在弹出的命令列表中选择 `MapleJS: MapleJS Stop MapleJS Engine`，若设备已连接，则会向设备发送stop script命令使得设备中止JS引擎的运行（由于设备和PC通过串口连接，在直观上可能存在延迟），否则会进行相关提示
 
 ![stop](./pictures/stop-cmd.gif)
 
@@ -151,6 +150,6 @@ vsc-antjs支持通过配置文件进行配置，读取的配置文件为工作�
 
 ![reboot](./pictures/reboot-btn.gif)
 
-使用命令：使用 `Ctrl+Shift+p`，在弹出的命令列表中选择 `AntJS: AntJS Reboot Device`，若已设置好串口，且已连接，则会向设备发送reboot命令使设备reboot，否则会进行相关提示
+使用命令：使用 `Ctrl+Shift+p`，在弹出的命令列表中选择 `MapleJS: MapleJS Reboot Device`，若已设置好串口，且已连接，则会向设备发送reboot命令使设备reboot，否则会进行相关提示
 
 ![reboot](./pictures/reboot-cmd.gif)
