@@ -16,5 +16,19 @@
 
   > 当前为试用版本
 
-  
+- `init-js-load-tool.exe`：脚本预置工具
+
+  该工具用于向运行MapleJS引擎的设备中预置JS脚本
+
+- `maple-client-serial.py`：调试客户端
+
+  该工具用于调试运行Debug版本的MapleJS引擎的设备
+
+- `MapleJS-snapshot.exe`：snapshot生成工具
+
+  该工具用于将JS脚本编译为snapshot文件
+
+- `ota-package-making-tool.py`：升级包制作工具
+
+  该工具用于生成运行MapleJS引擎的设备所需的升级包
 
