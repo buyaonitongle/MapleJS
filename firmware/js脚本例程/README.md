@@ -1,4 +1,4 @@
-- `98K.js: 基于爱联提供的开发板，抖音98K；
+- `98K.js`: 基于爱联提供的开发板，抖音98K；
 - `AWE-Demo.js`: 基于爱联提供的开发板，调用相应的模块。3秒读一次温湿度传感器，继电器操作一次，蜂鸣一次，并在oled屏上显示温湿度数值；
 - `canvas.js`: 基于爱联提供的开发板，调用`MapleJS`的canvas图形module，画圆和矩形；
 - `canvas-atom.js`, `canvas-button.js`: 基于爱联提供的开发板，调用`MapleJS`的canvas图形module，画滑动开关和单选框，2秒自动切换；
